@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exit Ticket: Procedures</title>
+<style>
+  :root {
+    --navy: #1B2B5E; --teal: #0D9488; --teal-bg: #E6F4F2; --code-bg: #F1F5F9;
+    --ink: #0F172A; --muted: #64748B; --line: #CBD5E1; --bg: #F8FAFC; --card: #FFFFFF;
+    --good: #15803D; --good-bg: #DCFCE7; --bad: #B91C1C; --bad-bg: #FEE2E2;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: Calibri, "Segoe UI", Arial, sans-serif; font-size: 17px; line-height: 1.5; }
+  header { background: var(--navy); color: #fff; padding: 22px 16px; border-bottom: 5px solid var(--teal); }
+  header .wrap, main { max-width: 760px; margin: 0 auto; }
+  h1 { font-family: Cambria, Georgia, serif; margin: 0; font-size: 28px; }
+  header p { margin: 4px 0 0; opacity: .85; }
+  main { padding: 20px 16px 60px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 18px 20px; margin-bottom: 18px; }
+  .card h2 { font-family: Cambria, Georgia, serif; color: var(--navy); font-size: 20px; margin: 0 0 10px; }
+  .qnum { color: var(--teal); margin-right: 6px; }
+  .marks { float: right; font-size: 14px; color: var(--muted); font-family: Calibri, Arial, sans-serif; font-weight: normal; }
+  label.field { display: block; font-weight: bold; margin: 10px 0 4px; }
+  input[type=text], input[type=email], select { width: 100%; padding: 9px 10px; font-size: 16px; border: 1px solid var(--line); border-radius: 6px; font-family: inherit; }
+  .grid3 { display: grid; grid-template-columns: 2fr 1fr; gap: 0 14px; }
+  .grid3 .full { grid-column: 1 / -1; }
+  pre { background: var(--code-bg); border-left: 5px solid var(--teal); padding: 12px 16px; margin: 8px 0 14px; font-family: Consolas, "Courier New", monospace; font-size: 15px; overflow-x: auto; border-radius: 0 6px 6px 0; }
+  .opt { display: flex; align-items: flex-start; gap: 10px; padding: 9px 12px; border: 1px solid var(--line); border-radius: 8px; margin: 6px 0; cursor: pointer; }
+  .opt:hover { border-color: var(--teal); background: var(--teal-bg); }
+  .opt input { margin-top: 5px; }
+  .opt code, .lineRow code { font-family: Consolas, monospace; }
+  .lineRow { display: flex; align-items: center; gap: 10px; margin: 6px 0; }
+  .lineRow span { width: 60px; color: var(--muted); font-size: 15px; }
+  .lineRow select { max-width: 300px; font-family: Consolas, monospace; }
+  .conf { display: flex; flex-wrap: wrap; gap: 8px; }
+  .conf .opt { flex: 1 1 180px; }
+  button { background: var(--teal); color: #fff; border: 0; padding: 13px 24px; font-size: 18px; border-radius: 8px; cursor: pointer; font-family: inherit; font-weight: bold; width: 100%; }
+  button:disabled { background: var(--muted); cursor: wait; }
+  .msg { padding: 12px 14px; border-radius: 8px; margin: 12px 0; display: none; }
+  .msg.err { display: block; background: var(--bad-bg); color: var(--bad); }
+  .fb { margin-top: 10px; padding: 10px 12px; border-radius: 8px; font-size: 15px; }
+  .fb.good { background: var(--good-bg); color: var(--good); }
+  .fb.bad { background: var(--bad-bg); color: var(--bad); }
+  .scorebox { text-align: center; background: var(--navy); color: #fff; border-radius: 10px; padding: 22px; margin-bottom: 18px; }
+  .scorebox .big { font-family: Cambria, Georgia, serif; font-size: 46px; font-weight: bold; }
+  .locked .opt, .locked select, .locked input { pointer-events: none; }
+  .locked .opt { opacity: .85; }
+  @media (max-width: 560px) { .grid3 { grid-template-columns: 1fr; } h1 { font-size: 24px; } pre { font-size: 13px; padding: 10px 12px; } }
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <h1>Exit Ticket: Procedures</h1>
+  <p>Year 7 Computing · Answer every question, then press Submit.</p>
+</div></header>
+
+<main>
+  <div id="result"></div>
+
+  <form id="ticket" autocomplete="off">
+    <div class="card">
+      <h2>Your details</h2>
+      <div class="grid3">
+        <div><label class="field" for="name">Full name</label><input type="text" id="name" required></div>
+        <div><label class="field" for="cls">Class</label>
+          <select id="cls" required><option value="">Choose…</option><option>Y7</option></select></div>
+        <div class="full"><label class="field" for="email">Email (your result will be sent here)</label><input type="email" id="email" required></div>
+      </div>
+    </div>
+
+    <div class="card" data-q="q1">
+      <h2><span class="qnum">Q1</span>What is a procedure? <span class="marks">1 mark</span></h2>
+      <label class="opt"><input type="radio" name="q1" value="a"> A loop that repeats code a set number of times</label>
+      <label class="opt"><input type="radio" name="q1" value="b"> A named block of code that does one job and can be called many times</label>
+      <label class="opt"><input type="radio" name="q1" value="c"> A variable that stores the answer to a calculation</label>
+      <label class="opt"><input type="radio" name="q1" value="d"> The output that a program shows on the screen</label>
+    </div>
+
+    <div class="card" data-q="q2">
+      <h2><span class="qnum">Q2</span>Which is a good reason to use a procedure? <span class="marks">1 mark</span></h2>
+      <label class="opt"><input type="radio" name="q2" value="a"> It makes the program run without any errors</label>
+      <label class="opt"><input type="radio" name="q2" value="b"> It lets a variable store more than one value</label>
+      <label class="opt"><input type="radio" name="q2" value="c"> We can write code once and use it many times, instead of repeating it</label>
+      <label class="opt"><input type="radio" name="q2" value="d"> The program no longer needs any OUTPUT statements</label>
+    </div>
+
+    <div class="card" data-q="q3">
+      <h2><span class="qnum">Q3</span>Which line makes this procedure <u>run</u>? <span class="marks">1 mark</span></h2>
+<pre>PROCEDURE Cube
+    INPUT Number
+    OUTPUT Number * Number * Number
+ENDPROCEDURE</pre>
+      <label class="opt"><input type="radio" name="q3" value="a"> <code>CALL Cube</code></label>
+      <label class="opt"><input type="radio" name="q3" value="b"> <code>PROCEDURE Cube</code></label>
+      <label class="opt"><input type="radio" name="q3" value="c"> <code>RUN Cube</code></label>
+      <label class="opt"><input type="radio" name="q3" value="d"> <code>Cube = CALL</code></label>
+    </div>
+
+    <div class="card" data-q="q4">
+      <h2><span class="qnum">Q4</span>What is output? <span class="marks">3 marks</span></h2>
+<pre>PROCEDURE Shout
+    OUTPUT "Go!"
+ENDPROCEDURE
+
+OUTPUT "Ready"
+CALL Shout
+CALL Shout</pre>
+      <p style="margin:0 0 6px">Choose what is output on each line, in order.</p>
+      <div class="lineRow"><span>Line 1</span><select name="q4_0" required></select></div>
+      <div class="lineRow"><span>Line 2</span><select name="q4_1" required></select></div>
+      <div class="lineRow"><span>Line 3</span><select name="q4_2" required></select></div>
+    </div>
+
+    <div class="card" data-q="q5">
+      <h2><span class="qnum">Q5</span>Which is the <u>argument</u>? <span class="marks">1 mark</span></h2>
+<pre>PROCEDURE Greet(Name : STRING)
+    OUTPUT "Hi ", Name
+ENDPROCEDURE
+
+CALL Greet("Aroon")</pre>
+      <label class="opt"><input type="radio" name="q5" value="a"> <code>Name</code></label>
+      <label class="opt"><input type="radio" name="q5" value="b"> <code>"Aroon"</code></label>
+      <label class="opt"><input type="radio" name="q5" value="c"> <code>STRING</code></label>
+      <label class="opt"><input type="radio" name="q5" value="d"> <code>Greet</code></label>
+    </div>
+
+    <div class="card" data-q="q6">
+      <h2><span class="qnum">Q6</span>Which line makes this procedure output <code>15</code>? <span class="marks">1 mark</span></h2>
+<pre>PROCEDURE Treble(Number : INTEGER)
+    OUTPUT Number * 3
+ENDPROCEDURE</pre>
+      <label class="opt"><input type="radio" name="q6" value="a"> <code>CALL Treble(15)</code></label>
+      <label class="opt"><input type="radio" name="q6" value="b"> <code>CALL Treble("5")</code></label>
+      <label class="opt"><input type="radio" name="q6" value="c"> <code>CALL Treble(5)</code></label>
+      <label class="opt"><input type="radio" name="q6" value="d"> <code>CALL Treble = 5</code></label>
+    </div>
+
+    <div class="card" data-q="q7">
+      <h2><span class="qnum">Q7</span>What is output? <span class="marks">1 mark</span></h2>
+<pre>PROCEDURE Introduce(Name : STRING, Age : INTEGER)
+    OUTPUT Name, " is ", Age
+ENDPROCEDURE
+
+CALL Introduce("Mary", 11)</pre>
+      <label class="opt"><input type="radio" name="q7" value="a"> <code>Mary is 11</code></label>
+      <label class="opt"><input type="radio" name="q7" value="b"> <code>Name is Age</code></label>
+      <label class="opt"><input type="radio" name="q7" value="c"> <code>Mary, 11</code></label>
+      <label class="opt"><input type="radio" name="q7" value="d"> <code>11 is Mary</code></label>
+    </div>
+
+    <div class="card">
+      <h2>How confident do you feel about procedures?</h2>
+      <div class="conf">
+        <label class="opt"><input type="radio" name="confidence" value="I could teach this"> I could teach this</label>
+        <label class="opt"><input type="radio" name="confidence" value="I mostly get it"> I mostly get it</label>
+        <label class="opt"><input type="radio" name="confidence" value="I need more help"> I need more help</label>
+      </div>
+    </div>
+
+    <div id="msg" class="msg"></div>
+    <button type="submit" id="submitBtn">Submit</button>
+  </form>
+</main>
+
+<script>
+  // Paste your Apps Script web-app URL here (Deploy → New deployment → Web app).
+  const SCRIPT_URL = 'PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE';
+
+  const LINE_OPTIONS = ['Ready', 'Go!', '(no more output)'];
+  document.querySelectorAll('select[name^="q4_"]').forEach(sel => {
+    sel.innerHTML = '<option value="">Choose…</option>' +
+      LINE_OPTIONS.map(o => `<option value="${o}">${o}</option>`).join('');
+  });
+
+  const form = document.getElementById('ticket');
+  const msg = document.getElementById('msg');
+  const btn = document.getElementById('submitBtn');
+  const val = n => (form.querySelector(`input[name="${n}"]:checked`) || {}).value || '';
+
+  function showError(t) { msg.className = 'msg err'; msg.textContent = t; }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    msg.className = 'msg';
+    const name = document.getElementById('name').value.trim();
+    const cls = document.getElementById('cls').value;
+    const email = document.getElementById('email').value.trim();
+    const answers = {
+      q1: val('q1'), q2: val('q2'), q3: val('q3'), q5: val('q5'), q6: val('q6'), q7: val('q7'),
+      q4: [0, 1, 2].map(i => form.querySelector(`select[name="q4_${i}"]`).value),
+    };
+    if (!name || !cls || !email) return showError('Please fill in your name, class and email.');
+    const missing = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7'].filter(q => q === 'q4' ? answers.q4.some(v => !v) : !answers[q]).map(q => q.toUpperCase());
+    if (missing.length) return showError('Please answer: ' + missing.join(', '));
+    if (!SCRIPT_URL.startsWith('https://')) return showError('This exit ticket has not been connected yet. Please tell your teacher.');
+
+    btn.disabled = true; btn.textContent = 'Submitting…';
+    try {
+      // text/plain body avoids a CORS preflight with Apps Script
+      const res = await fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify({ name, cls, email, answers, confidence: val('confidence') }) });
+      const data = await res.json();
+      if (!data.ok) throw new Error(data.error || 'Submission failed');
+      showResults(data);
+    } catch (err) {
+      showError('Could not submit: ' + err.message + '. Check your internet connection and try again.');
+      btn.disabled = false; btn.textContent = 'Submit';
+    }
+  });
+
+  function showResults(data) {
+    form.classList.add('locked');
+    btn.style.display = 'none';
+    Object.entries(data.results).forEach(([q, r]) => {
+      const card = form.querySelector(`[data-q="${q}"]`);
+      if (!card) return;
+      const fb = document.createElement('div');
+      fb.className = 'fb ' + (r.correct ? 'good' : 'bad');
+      fb.textContent = `${r.correct ? '✓' : '✗'} ${r.marks}/${r.max} · ${r.feedback}`;
+      card.appendChild(fb);
+    });
+    document.getElementById('result').innerHTML =
+      `<div class="scorebox"><div>Your score</div><div class="big">${data.score} / ${data.max}</div>
+       <div>A copy has been emailed to you. Read the feedback under each question.</div></div>`;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+</body>
+</html>
